@@ -1,0 +1,29 @@
+/*CHAPTER 8 display 속성으로 HTML 태그의 혈액형 바꾸기(Inline, block)*/
+
+/* Inline 요소는 줄바꿈 현상, width, height, margin-bottom 속성이 적용되지 않는다.*/
+span {
+	display: block; /*<span> 태그의 혈액형이 Block 요소로 바뀐다*/
+	width: 300px;
+	height: 300px;
+	background-color: yellow;
+	margin-bottom: 100px;
+}
+
+/* block 요소는 줄바꿈 현상, width, height, margin-bottom 속성이 적용된다. */
+h1 {
+	display: inline; /*<h1> 태그의 혈액형이 Inline 요소로 바뀜*/
+	width: 300px;
+	height: 300px;
+	background-color: yellow;
+	margin-bottom: 100px;
+}
+
+/*Inline 요소와 Block 요소가 섞여 있는 상태, 즉 줄 바꿈 현상은 일어나지 않지만 width, height, margin-bottom 속성은 적용되도록 하려면 어떻게 해야 할까요?*/
+h2 {
+	display: inline-block; /*둘을 결합하여 입력하면 Inline 요소와 Block 요소가 섞인 상태가 됩니다. 
+	결과를 보면 줄 바꿈 현상이 일어나지 않는 Inline 요소의 특징과 width와 height 속성이 적용되는 Block 요소의 특징을 모두 갖고 있습니다. margin-top, margin-bottom, padding-top, padding-bottom 속성도 적용할 수 있습니다. */
+	width: 300px;
+	height: 300px;
+	background-color: green;
+	margin-bottom: 100px;
+}

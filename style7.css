@@ -1,0 +1,87 @@
+
+
+#box_model {
+	width: 300px;
+	height: 300px;
+	background-color: yellow;
+	border: solid 20px red;
+	margin-left: 50px;
+	padding-left: 50px;
+}
+
+div {
+	width: 300px;
+	height: 300px;
+	background-color: yellow;
+}
+/*<html>과 <body> 태그는 기본적으로 margin 속성과 padding 속성을 갖고 있기 때문에 지금처럼 미세한 공백이 생깁니다.*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+/*이 공백을 없애려면 <html>과 <body> 태그의 margin과 padding 속성값을 0으로 설정해야 합니다.*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*CHAPTER 7 형제간에 발생하는 마진 병합 현상(margintop, margitbottom)*/
+
+/*다음과 같이 #first 안에 margin-bottom: 100px;을 적용하면 노란색 박스를 기준으로 아래쪽에 100px만큼 공백이 생깁니다.*/
+#first {
+    width: 100%;
+    height: 200px;
+    background-color: yellow;
+    margin-bottom: 100px; /*노란색 박스 아래에 공백이 100픽셀 생김*/
+}
+/*#second 안에 margin-top: 50px;을 적용하면 공백 크기가 얼마로 바뀔까요? 100px +50px = 150px이므로 공백 크기가 150px로 바뀔거라 여깁니다. 하지만 공백 크기는 변함없이 100px입니다. 왜 그런 걸까요?*/
+#second {
+    width: 100%;
+    height: 200px;
+    background-color: blue;
+    margin-top: 50px; /*margin-top: 50px;을 적용해도 공백의 크기는 변하지 않는다.*/
+}
+/*#first와 #second처럼 형제간에 margin-bottom과 margin-top 속성을 적용하면 큰 값이 작은 값을 병합하는 현상이 일어납니다.
+
+다시 예제 코드로 돌아가면 margin-bottom이 100px이고 margin-top이 50px입니다. 즉, 100px이 50px보다 크기 때문에 둘 사이 공백은 100px이 됩니다. 이것이 형제간에 발생하는 마진 병합 현상입니다. margin-bottom과 margin-top 안에 각각 속성값을 100px로 적용하면 어떻게 될까요? 둘의 간격은 100px이 됩니다.*/
+
+/* ++ */
+
+/*CHAPTER 7 부모 자식 간에 발생하는 마진 병합 현상(margintop, margitbottom)*/
+
+/*부모 자식 간에 발생하는 마진 병합 현상은 자식의 margin-top 속성이 부모에게 영향을 미치는 것을 말합니다.*/
+#parent {
+    width: 100%;
+    height: 500px;
+    background-color: yellow;
+}
+/*다음 CSS 코드에서 #child 안에 margin-top: 100px;을 적용하면 자식인 #child 영역의 위쪽에만 여백이 100px만큼 생겨야 합니다. 즉, 전체 이미지에서 파란색 박스만 아래로 100px 움직여야 합니다. 하지만 결과 화면을 보면 부모인 #parent의 노란색 박스까지 함께 내려갑니다. */
+#child {
+	position: absolute; /*병합 현상이 사라지고 파란색 박스만 아래로 움직이게 해준다.*/
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+    margin-top: 100px; /*파란색 박스는 물론 노란색 박스까지 함께 내려간다*/
+}
+/*다음과 같이 #child 안에 position: absolute;을 추가하면 부모 자식 간에 발생하는 마진 병합 현상이 사라지고 파란색 박스만 아래로 움직입니다.*/
+
+/*이렇듯 자식의 margin-top 속성이 부모에게 영향을 미치는 것을 ‘부모 자식 간에 발생하는 마진 병합 현상’이라고 말합니다. 레이아웃 작업을 할 때 자주 마주치는 현상입니다. 부모 자식 간에 발생하는 마진 병합 현상을 해결하려면 Day 08에서 다룰 position 속성을 알아야 합니다. 아직은 position 속성을 배우기 전이므로 지금은 가볍게 살펴보기 바랍니다.
+
+
+

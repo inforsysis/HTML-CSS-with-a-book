@@ -1,0 +1,90 @@
+
+/*CHAPTER 8 position 속성으로 HTML 태그에 차원 부여하기*/
+
+/*마진 병합 현상
+형제간 마진 병합 현상 = margin-bottom과 margin-top 속성을 적용하면 큰 값이 작은 값을 병합하는 현상
+
+부모자식간 마진 병합 현상 = 자식의 margin-top 속성이 부모에게 영향을 미치는 현상*/
+
+/*position 속성은 선택된 태그의 상태를 2차원 또는 3차원으로 지정합니다. 여기에 맞춰 레이어가 생기고 좌표 기준점이 달라집니다. position 속성의 속성값에는 static, fixed, relative, absolute가 있습니다. 각 속성값의 특징은 다음 세 가지 조건으로 확인할 수 있습니다.
+
+■ 부모 자식 간에 발생하는 마진 병합 현상 유무
+
+■ top, right, bottom, left 속성 적용 유무
+
+■ 부모가 높이를 갖고 있지 않을 때 자식의 높이가 부모의 높이에 영향을 주는지 유무
+
+2차원 특징을 갖는 position 속성값은 부모 자식 간에 발생하는 마진 병합 현상이 일어나고, top·right·bottom·left 속성을 사용할 수 없으며, 자식의 높이가 부모의 높이에 영향을 미칩니다. 반면 3차원 특징을 갖는 position 속성값은 부모 자식 간에 발생하는 마진 병합 현상이 일어나지 않으며, top·right·bottom·left 속성을 사용할 수 있으며, 자식의 높이가 부모의 높이에 영향을 줄 수 없습니다.*/
+
+
+
+
+
+/*2차원 세계, static 속성값
+
+static 속성값은 ➊ 부모 자식 간에 발생하는 마진 병합 현상이 일어나며, ➋ top· right·bottom·left 속성이 적용되지 않고, ➌ 부모가 높이를 갖고 있지 않을 경우에 자식의 높이가 부모에게 영향을 줍니다.
+
+static 속성값이 적용된 #position_static_child 안에 margin-top 속성을 적용하면 부모 자식 간에 발생하는 마진 병합 현상이 일어납니다.*/
+
+/*부모는 높이를 갖고 있지 않은 상태지만(주석 처리) 여전히 노란색 박스가 나타납니다. 이때 노란색 박스의 크기는 파란색 박스와 동일한 크기인 200px입니다. 이처럼 부모는 높이가 없고, 자식은 static 속성값과 높이를 갖고 있다면 자식의 높이가 부모에게 영향을 미칩니다. 즉, 현재 부모는 높이가 없는 0인 상태지만 자식의 높이만큼 부모의 공간이 벌어져 0에서 200px로 바뀐 것입니다.
+
+이러한 특징을 가진 position 속성값을 ‘2차원 특징을 갖고 있다’라고 말합니다. 참고로 모든 HTML 태그는 기본적으로 position: static 상태입니다. 따라서 position: static;을 삭제해도 결과는 동일하게 출력됩니다.*/
+
+#position_static_parent {
+    width: 500px;
+    /*height: 500px;*/
+    background-color: yellow;
+}
+ 
+#position_static_child {
+    /*position: static;*/
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin-top: 200px;
+    top: 500px;
+    /*margin과 padding 속성 외에 좌표를 지정하는 속성에는 top, right, bottom, left 속성이 있습니다. margin-top 속성 대신 top 속성을 적용하면 어떠한 변화도 일어나지 않습니다. 이를 통해 static 속성값은 top, right, bottom, left 속성과 함께 사용할 수 없다는 것을 알 수 있습니다.*/
+}
+
+
+
+
+/*3차원 세계, fixed 속성값
+
+fixed 속성값은 ➊ 부모 자식 간에 발생하는 마진 병합 현상이 일어나지 않으며, ➋ top· right·bottom·left 속성이 적용되며, ➌ 부모가 높이를 갖고 있지 않지 않더라도 자식의 높이가 부모에게 영향을 주지 않습니다.*/
+
+#box1 {
+	width: 500px;
+	height: 200px;
+	background-color: gray;
+}
+
+#position_fixed_parent {
+    width: 500px;
+    /*height: 500px;*/
+   /* 노란색 박스가 사라집니다. 즉, fixed 속성값을 갖고 있는 자식은 부모의 높이에 영향을 주지 못합니다.
+   이러한 특징을 지닌 position 속성값을 3차원 특징을 갖고 있다고 말합니다.*/
+    background-color: yellow;
+}
+
+#position_fixed_child {
+    position: fixed; /*fixed 속성값은 선택된 태그를 화면에 고정시킵니다. 실행 화면에서 마우스 포인터를 위아래로 스크롤하면 파란색 박스가 화면에 고정된 상태로 움직입니다. 쇼핑몰이나 뉴스 기사에서 화면을 따라다니는 작은 배너 광고가 fixed 속성값이 사용된 예입니다.*/
+    
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+
+    margin-top: 100px; /*#position_fixed_child 안에 margin-top 속성을 사용하면 부모 자식 간에 발생하는 마진 병합 현상은 일어나지 않고 파란색 박스만 움직입니다.*/
+
+    top: 300px; /*화면상 보여지는 좌표설정 개념*/
+
+    /*여기서 한 가지 주의해서 살펴볼 부분이 있습니다. margin-top과 top은 속성은 다르지만 속성값으로 똑같이 100px을 적용했는데 왜 파란색 박스의 위치가 다른 걸까요?
+
+	fixed 속성값이 적용된 영역 안에 margin-top 속성을 적용하면 최초 파란색 박스가 생성된 지점을 기준으로 좌표가 설정됩니다. 하지만 top 속성을 적용하면 항상 브라우저 왼쪽 상단을 기준으로 좌표 기준점이 바뀝니다. 따라서 top 속성이 적용된 현재 상태에서는 브라우저를 기준으로 100픽셀만큼 내려오는 것입니다.*/
+}
+
+#box2 {
+	width: 500px;
+	height: 2000px;
+	background-color: pink;
+}
