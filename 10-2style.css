@@ -1,0 +1,17 @@
+/*선택된 영역의 크기를 비율로 조정하는 scale( )
+
+scale() 속성값은 선택된 요소의 크기를 비율로 조정할 때 사용합니다.
+
+transform: scale(x, y);
+ 
+첫 번째 숫자는 너비(width) 비율, 두 번째 숫자는 높이(height) 비율을 뜻합니다. 원본 크기는 숫자 1을 기준으로 1보다 크면 확대하고 1보다 작으면 축소합니다. 비율에는 1.2나 1.5와 같이 소수점도 쓸 수 있습니다.*/
+
+@charset "utf-8";
+
+#transfor_scale {
+	width: 300px;
+	height: 300px;
+	background-color: yellow;
+	margin: 200px 0 0 200px;
+	transform: scale(2, 2); /*너비와 높이를 각각 2배 확대*/
+}
