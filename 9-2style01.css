@@ -1,0 +1,24 @@
+/*HTML 태그를 공중에 띄우는 float 속성
+
+float 속성은 문자 그대로 ‘띄우다’라는 의미를 담고 있습니다. 선택된 태그를 띄워서 부모의 공간을 기준으로 왼쪽 끝이나 오른쪽 끝에 배치할 때 사용합니다. 왼쪽 끝부터 순서대로 정렬할 때는 float: left;을 사용하고 오른쪽 끝부터 순서대로 정렬할 때는 float: right;을 사용합니다.*/
+
+@charset "utf-8";
+
+#left {
+	float: left;
+	width: 200px;
+	height: 400px;
+	background-color: yellow;
+}
+
+#right {
+	float: right;
+	width: 200px;
+	height: 400px;
+	background-color: blue;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}

@@ -1,0 +1,53 @@
+/*잠 깐 만 요
+
+형제간에 레이어가 겹치는 현상
+
+position 속성의 2차원과 3차원 개념을 숙지하고 나면 레이어가 생기는 3차원이 항상 2차원보다 위에 배치된다고 오해하는 경우가 많습니다. 2차원과 3차원 간에 발생하는 레이어가 겹치는 현상은 형제간에 발생하며 그 순서에 따라 전혀 다른 결과가 나타납니다.
+
+다음은 형제간에 적용된 2차원과 3차원 순서에 따라 레이아웃이 어떻게 달라지는지를 보여 주는 예제 코드입니다.*/
+
+
+@charset "utf-8";
+
+/* 첫 번째 형제가 3차원이고 두 번째 형제가 2차원일 경우 = 레이어 겹침 현상*/
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+.first {
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	background-color: yellow;
+}
+
+.second {
+	position: static;
+	width: 100%;
+	height: 300px;
+	background-color: blue;
+}
+
+
+/* 첫 번째 형제가 2차원이고 두 번째 형제가 3차원일 경우 = 순서대로 출력 */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.first {
+    position: static;
+    width: 100%;
+    height: 300px;
+    background-color: yellow;
+}
+
+.second {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: blue;
+}
+
+/*결과를 보면 첫 번째 형제가 3차원이고 두 번째 형제가 2차원일 때는 첫 번째 형제 뒤쪽으로 두 번째 형제가 숨겨지는 ‘레이어 겹침’ 현상이 발생합니다. 반대로 첫 번째 형제가 2차원이고 두 번째 형제가 3차원일 때는 박스가 순서대로 출력되면서 레이어 겹침 현상이 일어나지 않습니다. 이는 float 속성에도 적용되는 공식입니다.*/

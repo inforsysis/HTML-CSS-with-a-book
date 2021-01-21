@@ -1,0 +1,56 @@
+/*전통적인 웹 사이트 레이아웃 구조 만들기
+
+먼저 HTML 문서 안의 공간을 정의하는 <header>, <aside>, <section>, <footer> 태그를 사용하여 설계 도면 작업을 진행합니다. 앞에서 언급했듯이 <html>과 <body> 태그는 기본적으로 margin과 padding 속성을 갖고 있으므로 공백이 생깁니다. 따라서 margin: 0;과 padding: 0;을 적용하여 공백을 없앱니다.*/
+
+@charset "utf-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	color: chocolate;
+	text-align: center;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: yellow;
+}
+
+#left {
+	float: left;
+	width: 150px;
+	height: 200px;
+	background-color: blue;
+}
+
+section {
+	float: left;
+	/*파란색 박스 옆에 주황색 박스를 배치하려면 왼쪽 끝부터 순서대로 배치하겠다는 의미로 <section> 태그에도 똑같이 float: left;을 적용합니다. <aside id="left">와 <section> 태그에 float: left;을 적용하면 ‘왼쪽부터 차곡차곡 배치하겠다’는 뜻이 됩니다.*/
+	width: 2210px;
+	height: 200px;
+	background-color: orange;
+}
+
+#right {
+	float: right;
+	/*이제 <aside id="left">, <section>, <aside id="right"> 공간 모두 float 속성이 적용되어 3차원 특징의 일부를 갖게 되었습니다. 이때 <footer> 태그의 검은색 박스가 박스 세 개(파란색, 주황색, 빨간색) 뒤쪽으로 배치된 이유는 박스 세 개와 검은색 박스의 레이어가 달라졌기 때문입니다.*/
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
+
+footer {
+	clear: both;
+	/*float 와 clear 속성은 실과 바늘
+
+	clear 속성은 ‘취소하다’라는 의미를 갖고 있으며 float 속성의 기능을 제어하는 데 사용합니다. 속성값에는 left, right, both 등이 있습니다.
+
+	float: left 기능을 제어하고 싶다면 clear: left를 사용하고, float: right 기능을 제어하고 하고 싶다면 clear: right를 사용합니다. float: left와 float: right 기능을 둘 다 제어하고 싶다면 clear: both를 사용합니다. 일반적으로 clear 속성은 both 속성값을 사용합니다.
+
+	clear 속성은 마지막으로 float 속성값이 적용된 태그 다음에 등장하는 태그 안에 넣어 주면 됩니다. 예를 들어 현재 <aside id="right"> 안에 float 속성을 마지막으로 사용했으므로 그다음에 나오는 태그인 <footer> 태그 안에 다음과 같이 clear 속성을 적용하면 우리가 원하는 위치에 검은색 박스가 정렬됩니다.*/
+	
+	width: 100%;
+	height: 100px;
+	background-color: black;
+}
